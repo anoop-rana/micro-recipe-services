@@ -32,26 +32,38 @@ public class IngredientController {
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<Ingredient> findById(@PathVariable long id) {
+	public ResponseEntity<Object> findById(@PathVariable long id) {
 		Optional<Ingredient> ingredient = ingredientService.findIngredientById(id);
-		return new ResponseEntity<Ingredient>(ingredient.get(), new HttpHeaders(), HttpStatus.OK);
+		return validateIngredient(ingredient);
 	}
 
 	@GetMapping("/name/{name}")
-	public ResponseEntity<Ingredient> findByName(@PathVariable String name) {
+	public ResponseEntity<Object> findByName(@PathVariable String name) {
 		Optional<Ingredient> ingredient = ingredientService.findIngredientByName(name);
-		return new ResponseEntity<Ingredient>(ingredient.get(), new HttpHeaders(), HttpStatus.OK);
+		return validateIngredient(ingredient);
 	}
-	
+
 	@PostMapping
 	public ResponseEntity<Ingredient> createOrUpdate(@RequestBody Ingredient ingredient) {
 		Ingredient updated = ingredientService.createOrUpdate(ingredient);
 		return new ResponseEntity<Ingredient>(updated, new HttpHeaders(), HttpStatus.OK);
 	}
 
-	@DeleteMapping("/delete/{id}")
-	public HttpStatus delete(@PathVariable long id) {
-		ingredientService.deleteIngredient(id);
-		return HttpStatus.FORBIDDEN;
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Object> delete(@PathVariable long id) {
+		Optional<Ingredient> ingredient = ingredientService.findIngredientById(id);
+		if (ingredient.isPresent()) {
+			ingredientService.deleteIngredient(id);
+			return new ResponseEntity<Object>("Deleted", new HttpHeaders(), HttpStatus.FORBIDDEN);
+		} else {
+			return new ResponseEntity<Object>("Not Found", new HttpHeaders(), HttpStatus.EXPECTATION_FAILED);
+		}
+	}
+
+	private ResponseEntity<Object> validateIngredient(Optional<Ingredient> ingredient) {
+		if (ingredient.isPresent())
+			return new ResponseEntity<Object>(ingredient.get(), new HttpHeaders(), HttpStatus.OK);
+		else
+			return new ResponseEntity<Object>("Ingredient Not Found", new HttpHeaders(), HttpStatus.OK);
 	}
 }
