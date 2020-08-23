@@ -1,0 +1,12 @@
+zuul:
+    prefix: /recipe
+    routes:
+      ingredient-service:
+        path: /ingredient/**
+        url: http://localhost:8084/ingredient
+      recipe-service:
+        path: /recipe/**
+        url: http://localhost:8081/recipe
+      user-service:
+        path: /user/**
+        url: http://localhost:8083/user
