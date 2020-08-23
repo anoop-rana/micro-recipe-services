@@ -32,8 +32,12 @@ It manage and provide ingredient
     * href	"http://localhost:8084/ingredient"
     * href	"http://localhost:8084/ingredient/{id}"
     * href	"http://localhost:8084/ingredient/name/{name}"
-    * href	"http://localhost:8084/actuator/delete/{id}"
 
 #### User Microservice
+It manage and provide User Credential
+
+    * href	"http://localhost:8084/user"
+    * href	"http://localhost:8084/user/{id}"
+    * href	"http://localhost:8084/user/name/{name}"
 
 #### Recipe Microservice
