@@ -13,10 +13,10 @@ It contains micro-services related to recipe app
 #### Ingredient Microservice
 It manage and provide ingredient
 
-href	"http://localhost:8084/ingredient"	
-href	"http://localhost:8084/ingredient/{id}"
-href	"http://localhost:8084/ingredient/name/{name}"
-href	"http://localhost:8084/actuator/delete/{id}"
+* href	"http://localhost:8084/ingredient"
+* href	"http://localhost:8084/ingredient/{id}"
+* href	"http://localhost:8084/ingredient/name/{name}"
+* href	"http://localhost:8084/actuator/delete/{id}"
 
 #### User Microservice
 
