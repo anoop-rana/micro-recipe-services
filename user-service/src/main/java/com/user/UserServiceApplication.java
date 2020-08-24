@@ -6,12 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 import com.user.bean.User;
 import com.user.repository.UserRepository;
 
 
-//@EnableEurekaClient
+@EnableEurekaClient
 @SpringBootApplication
 public class UserServiceApplication implements CommandLineRunner{
 

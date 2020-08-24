@@ -3,10 +3,10 @@ zuul:
     routes:
       ingredient-service:
         path: /ingredient/**
-        url: http://localhost:8084/ingredient
+        url: http://localhost:9092/ingredient
       recipe-service:
         path: /recipe/**
-        url: http://localhost:8081/recipe
+        url: http://localhost:9093/recipe
       user-service:
         path: /user/**
-        url: http://localhost:8083/user
+        url: http://localhost:9094/user
